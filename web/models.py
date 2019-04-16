@@ -10,7 +10,6 @@ class Category(models.Model):
 
 # Create your models here.
 class User (User):
-
     # username=models.CharField(max_length=50 , primary_key=True)
     phone_number = models.CharField(max_length=15)
     # password = models.CharField(max_length=20)
@@ -44,7 +43,7 @@ class Post(models.Model):
     book = models.ForeignKey(Book , on_delete=models.CASCADE)
     sales_price = models.DecimalField(max_digits=10 , decimal_places=0)#find better field
     state = models.CharField(max_length=10 , choices=STATE)
-    owner = models.ForeignKey(User , on_delete=models.CASCADE)
+    owner = models.ForeignKey(User , on_delete=models.CASCADE , null=True)
     location = models.CharField(max_length=60 )#find beter location
     date = models.DateTimeField()
     special = models.BooleanField()#ToDO better field
