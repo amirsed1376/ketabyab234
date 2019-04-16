@@ -5,6 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 from .models import *
+import django.contrib.auth.hashers
 
 
 from .models import *
@@ -25,7 +26,7 @@ def login(request):
             username = request.POST['username']
             password = request.POST['password']
             this_user = get_object_or_404(User, username=username)
-            hash_password=
+            # hash_password=
             if password == this_user.password:#TODO check if (check_password(password, this_user.password)):  # authentication
             # if (check_password(password, this_user.password)):  # authentication
             #     this_token = get_object_or_404(Token, user=this_user)
@@ -45,6 +46,8 @@ def login(request):
 
 @csrf_exempt
 def sign_up(request):
+    post = Post.objects.create(n)
+    post.show()
     if request.method =='GET':
         return render(request, "ketabyab_sign.html")
 
@@ -72,7 +75,6 @@ def sign_up(request):
             # User.objects.save(this_user)
                 context['result'] = 'sign up ok'#TODO go to main page
         return JsonResponse(context, encoder=JSONEncoder)
-
 
 
 
